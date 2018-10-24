@@ -21,6 +21,12 @@ module Api
         render json: {status: 'SUCCESS', message: 'Loaded article', data: article}, status: :ok
       end
 
+      def destroy
+        article = Article.find(params[:id])
+        article.destroy
+        render json: {status: 'SUCCESS', message: 'Deleted Article', data: article}, status: :ok
+      end
+
       private
       def article_params
         params.permit(:title, :body)
